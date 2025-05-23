@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS tidygo;
 CREATE DATABASE tidygo;
 
