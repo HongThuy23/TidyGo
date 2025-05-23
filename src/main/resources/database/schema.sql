@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 233bbc7 (create all entities)
 DROP DATABASE IF EXISTS tidygo;
 CREATE DATABASE tidygo;
 
