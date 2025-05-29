@@ -67,6 +67,9 @@ public class Account {
     @Column(name = "gender", nullable = false)
     Gender gender = Gender.FEMALE;
 
+    @Column(name = "phone_number", nullable = false)
+    String phoneNumber;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     AccountStatus status = AccountStatus.ACTIVE;

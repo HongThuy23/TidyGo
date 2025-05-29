@@ -1,0 +1,66 @@
+<div th:fragment="sidebar" id="sidebar" class="active">
+    <div class="sidebar-wrapper active">
+        <div class=" text-center">
+            <a href="index.html">
+                <img src="images/logo/logo-bl.png" alt="Logo" class="img-fluid w-50 ">
+            </a>
+        </div>
+
+
+        <div class="sidebar-menu">
+            <ul class="menu">
+
+                <li class="sidebar-item  ">
+                    <a href="dashboard.html" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Thống kê</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a th:href="@{/account}" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a th:href="@{/service}" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Dịch vụ</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="subservice-management.html" class='sidebar-link'>
+                        <i class="bi bi-puzzle"></i>
+                        <span>Dịch vụ</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="worker-contract-management.html" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Hợp đồng giúp việc</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="complaint-management.html" class='sidebar-link'>
+                        <i class="bi bi-x-octagon-fill"></i>
+                        <span>Khiếu nại</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="post-management.html" class='sidebar-link'>
+                        <i class="bi bi-pen-fill"></i>
+                        <span>Bài đăng</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+    </div>
+</div>
