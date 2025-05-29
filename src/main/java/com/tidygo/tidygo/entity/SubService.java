@@ -44,7 +44,7 @@ public class SubService {
     Double salesPrice;
 
     @Column(name = "unit_quantity", nullable = false)
-    Integer unitQuatity;
+    Integer unitQuantity;
 
     @Column(name = "worker_quantity", nullable = false)
     Integer workerQuantity = 1;

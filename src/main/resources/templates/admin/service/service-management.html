@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/admin/fragments/head :: head}"></head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" th:replace="~{/admin/fragments/sidebar :: sidebar}"></div>
+        <div id="main">
+            <header th:replace="~{/admin/fragments/header :: header}"></header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Quản lý dịch vụ</h3>
+                            <p class="text-subtitle text-muted">Quản lý dịch vụ</p>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dịch vụ</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Quản lý dịch vụ</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            Danh sách dịch vụ
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>Tên dịch vụ</th>
+                                        <th>Loại hình dịch vụ</th>
+                                        <th>Mô tả</th>
+                                        <th>Ngày cập nhật</th>
+                                        <th>Số dịch vụ con</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="service : ${services}">
+                                        <td th:text="${service.name}"></td>
+                                        <td th:text="${service.unitType}"></td>
+                                        <td th:text="${service.description}"></td>
+                                        <td th:text="${service.updatedAt}"></td>
+                                        <td th:text="${service.numberOfSubService}"></td>
+                                        <td><a class=" fs-6 d-flex align-items-center justify-content-center text-primary"
+                                                data-bs-toggle="modal"
+                                                th:attr="data-bs-target = '#detailModal' + ${service.id}">
+                                                <i class="bi bi-info-circle"></i></a>
+                                        </td>
+                                        <td><a
+                                                class="fs-6 d-flex align-items-center justify-content-center text-warning"><i
+                                                    class="bi bi-pencil-square"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <footer th:replace="~{/admin/fragments/footer :: footer}"></footer>
+        </div>
+
+
+
+    </div>
+    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+
+        // Disable toast auto-dismiss 3s
+        window.addEventListener('DOMContentLoaded', () => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toastEl => {
+                const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+                toast.show();
+            });
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
