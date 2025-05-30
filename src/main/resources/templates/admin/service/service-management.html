@@ -38,6 +38,7 @@
                                         <th>Tên dịch vụ</th>
                                         <th>Loại hình dịch vụ</th>
                                         <th>Mô tả</th>
+                                        <th>Ngày tạo</th>
                                         <th>Ngày cập nhật</th>
                                         <th>Số dịch vụ con</th>
                                         <th></th>
@@ -49,6 +50,7 @@
                                         <td th:text="${service.name}"></td>
                                         <td th:text="${service.unitType}"></td>
                                         <td th:text="${service.description}"></td>
+                                        <td th:text="${service.createdAt}"></td>
                                         <td th:text="${service.updatedAt}"></td>
                                         <td th:text="${service.numberOfSubService}"></td>
                                         <td><a class=" fs-6 d-flex align-items-center justify-content-center text-primary"
@@ -57,8 +59,9 @@
                                                 <i class="bi bi-info-circle"></i></a>
                                         </td>
                                         <td><a
-                                                class="fs-6 d-flex align-items-center justify-content-center text-warning"><i
-                                                    class="bi bi-pencil-square"></i></a></td>
+                                                class="fs-6 d-flex align-items-center justify-content-center text-warning">
+                                                <i class="bi bi-pencil-square"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -71,7 +74,83 @@
             <footer th:replace="~{/admin/fragments/footer :: footer}"></footer>
         </div>
 
+        <!-- Detail modal-->
+        <div class="modal fade show" th:each="service : ${services}" th:id="'detailModal' + ${service.id}" tabindex="-1"
+            aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-primary" id="exampleModalCenterTitle">Thông tin danh mục dịch vụ
+                        </h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <i data-feather="x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row match-height justify-content-center">
+                            <table class="border-0 w-auto">
+                                <tr>
+                                    <th class="text-end p-1">Tên dịch vụ:</th>
+                                    <td class="p-1" th:text="${service.name}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end p-1">Loại hình dịch vụ:</th>
+                                    <td class="p-1" th:text="${service.unitType}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end p-1">Ngày tạo:</th>
+                                    <td class="p-1" th:text="${service.createdAt}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end p-1">Ngày cập nhật:</th>
+                                    <td class="p-1" th:text="${service.updatedAt}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-end p-1">Mô tả:</th>
+                                    <td class="p-1" th:text="${service.description}"></td>
+                                </tr>
+                            </table>
 
+                            <p class="fs-6 fw-bold text-primary m-2">Dịch vụ con</p>
+                            <p th:if="${#lists.isEmpty(service.subServiceResponses)}" class="text-danger text-center">
+                                Chưa có dịch vụ con</p>
+                            <table th:if="${not #lists.isEmpty(service.subServiceResponses)}"
+                                class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tên</th>
+                                        <th>Số lượng người giúp việc</th>
+                                        <th>Đơn vị thời gian</th>
+                                        <th>Giá gốc</th>
+                                        <th>Giá khuyến mãi</th>
+                                        <th>Mô tả</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="subService : ${service.subServiceResponses}">
+                                        <td th:text="${subService.id}"></td>
+                                        <td th:text="${subService.name}"></td>
+                                        <td th:text="${subService.workerQuantity}"></td>
+                                        <td th:text="${subService.unitQuantity}"></td>
+                                        <td th:text="${subService.originalPrice}"></td>
+                                        <td th:text="${subService.salesPrice}"></td>
+                                        <td th:text="${subService.description}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Đóng</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

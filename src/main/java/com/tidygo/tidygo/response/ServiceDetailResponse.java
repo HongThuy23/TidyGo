@@ -22,6 +22,7 @@ public class ServiceDetailResponse {
     String description;
     String createdAt;
     String updatedAt;
+    Integer numberOfSubService;
     List<SubServiceResponse> subServiceResponses;
-    List<ImageResponse> serviceImageResponses;
+    // List<ImageResponse> serviceImageResponses;
 }

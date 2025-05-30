@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.tidygo.tidygo.mapper.ServiceMapper;
 import com.tidygo.tidygo.repository.ServiceRepository;
-import com.tidygo.tidygo.response.ServiceResponse;
+import com.tidygo.tidygo.response.ServiceDetailResponse;
 import com.tidygo.tidygo.service.IServiceService;
 
 import lombok.AccessLevel;
@@ -21,8 +21,9 @@ public class ServiceServiceImpl implements IServiceService {
     final ServiceMapper serviceMapper;
 
     @Override
-    public List<ServiceResponse> getAllServices() {
-        return serviceMapper.toServiceResponse(serviceRepository.findAll());
+    public List<ServiceDetailResponse> getAllServices() {
+        // return serviceMapper.toServiceResponse(serviceRepository.findAll());
+        return serviceMapper.toServiceDetailResponse(serviceRepository.findAll());
     }
 
 }
