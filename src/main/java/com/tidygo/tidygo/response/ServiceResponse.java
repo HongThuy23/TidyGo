@@ -21,5 +21,6 @@ public class ServiceResponse {
     String unitType;
     String description;
     LocalDateTime createdAt;
+    LocalDateTime updatedAt;
     Integer numberOfSubService;
 }
