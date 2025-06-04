@@ -41,7 +41,7 @@ public class Service {
     @Column(name = "unit_type", nullable = false)
     ServiceUnitType unitType = ServiceUnitType.HOUR;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     String description;
 
     @CreationTimestamp

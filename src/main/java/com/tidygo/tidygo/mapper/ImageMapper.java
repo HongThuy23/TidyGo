@@ -17,4 +17,5 @@ public interface ImageMapper {
     ImageResponse toImageResponse(Image image);
 
     List<ImageResponse> toImageResponse(List<Image> images);
+
 }
