@@ -1,5 +1,7 @@
 package com.tidygo.tidygo.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -17,4 +19,6 @@ public interface SubServiceMapper {
     @Mapping(target = "unitQuantity", source = "unitQuantity")
     @Mapping(target = "workerQuantity", source = "workerQuantity")
     SubServiceResponse toSubServiceResponse(SubService subService);
+
+    List<SubServiceResponse> toSubServiceResponse(List<SubService> subServices);
 }

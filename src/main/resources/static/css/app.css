@@ -314,7 +314,7 @@
 }
 
 .card {
-    margin-bottom: 2.2rem;
+    /* margin-bottom: 2.2rem; */
     border: none
 }
 
@@ -373,7 +373,7 @@
 }
 
 .card .card-body {
-    padding: 1.5rem
+    /* padding: 1.5rem */
 }
 
 .card .card-heading {
@@ -1108,8 +1108,8 @@
 }
 
 .navbar {
-    height: 90px;
-    /* padding: 1.5rem */
+    /* height: 90px; */
+    padding: .5rem
 }
 
 .navbar .navbar-brand img {

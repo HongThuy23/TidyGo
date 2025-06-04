@@ -292,11 +292,11 @@
             <div class="toast-container position-fixed bottom-0 end-0 p-3">
 
                 <!-- Success Toast -->
-                <div th:if="${successMessage}" class="toast align-items-center bg-success border-0 show" role="alert"
+                <div th:if="${successMessage}" class="toast toast-success align-items-center border-0 show" role="alert"
                     aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">
-                            <span class="text-white" th:text="${successMessage}">Thành công!</span>
+                            <span class="text-white" th:text="${successMessage}"></span>
                         </div>
                         <button type="button" class="btn-close me-2 m-auto text-white" data-bs-dismiss="toast"
                             aria-label="Close"></button>
@@ -304,8 +304,8 @@
                 </div>
 
                 <!-- Error Toast -->
-                <div th:if="${errorMessage}" class="toast align-items-center bg-danger border-0 show" role="alert"
-                    aria-live="assertive" aria-atomic="true">
+                <div th:if="${errorMessage}" class="toast toast-error align-items-center bg-danger border-0 show"
+                    role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="d-flex">
                         <div class="toast-body">
                             <span class="text-danger" th:text="${errorMessage}">Lỗi!</span>

@@ -8,44 +8,44 @@ TRUNCATE TABLE service;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO `role`(`name`)
-VALUES	('CUSTOMER'),
-		('WORKER'),
-        ('ADMIN');
+VALUES	('Khách hàng'),
+		('Người giúp việc'),
+        ('Quản trị viên');
 SELECT * FROM `role`;
 
-INSERT INTO `account` (role_id, first_name, last_name, username, `password`, email, avatar, dob, gender, `status`, created_at, updated_at)
-VALUES	(1, 'Minh', 'Nguyen', 'minhnguyen', 'pass123!', 'minh.nguyen@example.com', 'avatar1.jpg', '1997-05-12', 'MALE', 'ACTIVE', NOW(), NOW()),
-		(2, 'Linh', 'Tran', 'linhtran', 'pass456!', 'linh.tran@example.com', 'avatar2.jpg', '1995-08-22', 'FEMALE', 'ACTIVE', NOW(), NOW()),
-		(1, 'Khoa', 'Pham', 'khoapham', 'pass789!', 'khoa.pham@example.com', 'avatar3.jpg', '1992-12-01', 'MALE', 'INACTIVE', NOW(), NOW()),
-		(3, 'Thu', 'Le', 'thule', 'passabc!', 'thu.le@example.com', 'avatar4.jpg', '1998-03-15', 'FEMALE', 'ACTIVE', NOW(), NOW()),
-		(1, 'Tuan', 'Hoang', 'tuanhoang', 'passtuan!', 'tuan.hoang@example.com', 'avatar5.jpg', '1990-06-17', 'MALE', 'ACTIVE', NOW(), NOW()),
-		(2, 'Anh', 'Nguyen', 'anhnguyen', 'passanh!', 'anh.nguyen@example.com', 'avatar6.jpg', '1999-11-09', 'FEMALE', 'ACTIVE', NOW(), NOW()),
-		(3, 'Huy', 'Vo', 'huyvo', 'passhuy!', 'huy.vo@example.com', 'avatar7.jpg', '1989-01-28', 'MALE', 'INACTIVE', NOW(), NOW()),
-		(2, 'Trang', 'Do', 'trangdo', 'passtrang!', 'trang.do@example.com', 'avatar8.jpg', '1996-04-05', 'FEMALE', 'ACTIVE', NOW(), NOW()),
-		(1, 'Nam', 'Ly', 'namly', 'passnam!', 'nam.ly@example.com', 'avatar9.jpg', '1993-07-19', 'MALE', 'ACTIVE', NOW(), NOW()),
-		(3, 'Quynh', 'Nguyen', 'quynhnguyen', 'passquynh!', 'quynh.nguyen@example.com', 'avatar10.jpg', '1994-10-30', 'FEMALE', 'ACTIVE', NOW(), NOW());
+INSERT INTO `account` (role_id, first_name, last_name, username, `password`, email, avatar, dob, gender, phone_number, `status`, created_at, updated_at)
+VALUES	(1, 'Minh', 'Nguyen', 'minhnguyen', 'pass123!', 'minh.nguyen@example.com', 'avatar1.jpg', '1997-05-12', 'MALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(2, 'Linh', 'Tran', 'linhtran', 'pass456!', 'linh.tran@example.com', 'avatar2.jpg', '1995-08-22', 'FEMALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(1, 'Khoa', 'Pham', 'khoapham', 'pass789!', 'khoa.pham@example.com', 'avatar3.jpg', '1992-12-01', 'MALE', '0123456789', 'INACTIVE', NOW(), NOW()),
+		(3, 'Thu', 'Le', 'thule', 'passabc!', 'thu.le@example.com', 'avatar4.jpg', '1998-03-15', 'FEMALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(1, 'Tuan', 'Hoang', 'tuanhoang', 'passtuan!', 'tuan.hoang@example.com', 'avatar5.jpg', '1990-06-17', 'MALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(2, 'Anh', 'Nguyen', 'anhnguyen', 'passanh!', 'anh.nguyen@example.com', 'avatar6.jpg', '1999-11-09', 'FEMALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(3, 'Huy', 'Vo', 'huyvo', 'passhuy!', 'huy.vo@example.com', 'avatar7.jpg', '1989-01-28', 'MALE', '0123456789', 'INACTIVE', NOW(), NOW()),
+		(2, 'Trang', 'Do', 'trangdo', 'passtrang!', 'trang.do@example.com', 'avatar8.jpg', '1996-04-05', 'FEMALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(1, 'Nam', 'Ly', 'namly', 'passnam!', 'nam.ly@example.com', 'avatar9.jpg', '1993-07-19', 'MALE', '0123456789', 'ACTIVE', NOW(), NOW()),
+		(3, 'Quynh', 'Nguyen', 'quynhnguyen', 'passquynh!', 'quynh.nguyen@example.com', 'avatar10.jpg', '1994-10-30', 'FEMALE', '0123456789', 'ACTIVE', NOW(), NOW());
 SELECT * FROM `account`;
 
 INSERT INTO worker_contract(account_id, first_name, last_name, email, bio, experience_year, id_photo, dob, gender, `status`, start_date, end_date, signed_at, term_url, created_at, updated_at) 
-VALUES	(2, 'Minh', 'Nguyen', 'minh.nguyen@example.com', 'Experienced cleaner with 5 years', 5, 'id_photo1.jpg', '1997-05-12', 'MALE', 'ACTIVE', '2024-01-01', '2024-12-31', NOW(), 'contract1.pdf', NOW(), NOW()),
-		(6, 'Linh', 'Tran', 'linh.tran@example.com', 'Specialist in house cleaning', 3, 'id_photo2.jpg', '1995-08-22', 'FEMALE', 'ACTIVE', '2024-02-01', '2024-12-31', NOW(), 'contract2.pdf', NOW(), NOW()),
-		(8, 'Khoa', 'Pham', 'khoa.pham@example.com', 'Window and glass cleaner', 7, 'id_photo3.jpg', '1992-12-01', 'MALE', 'PENDING', '2024-03-01', '2024-12-31', NULL, 'contract3.pdf', NOW(), NOW());
+VALUES	(2, 'Minh', 'Nguyen', 'minh.nguyen@example.com', 'Experienced cleaner with 5 years', 5, 'id_photo1.jpg', '1997-05-12', 'MALE', '0123456789', 'ACTIVE', '2024-01-01', '2024-12-31', NOW(), 'contract1.pdf', NOW(), NOW()),
+		(6, 'Linh', 'Tran', 'linh.tran@example.com', 'Specialist in house cleaning', 3, 'id_photo2.jpg', '1995-08-22', 'FEMALE', '0123456789', 'ACTIVE', '2024-02-01', '2024-12-31', NOW(), 'contract2.pdf', NOW(), NOW()),
+		(8, 'Khoa', 'Pham', 'khoa.pham@example.com', 'Window and glass cleaner', 7, 'id_photo3.jpg', '1992-12-01', 'MALE', '0123456789', 'PENDING', '2024-03-01', '2024-12-31', NULL, 'contract3.pdf', NOW(), NOW());
 SELECT * FROM worker_contract;
 
 INSERT INTO image(`name`, url)
-VALUES	('Dọn dẹp nhà cửa', 'https://example.com/images/cleaning-house.jpg'),
-		('Giặt giũ quần áo', 'https://example.com/images/laundry.jpg'),
-		('Nấu ăn gia đình', 'https://example.com/images/cooking.jpg'),
-		('Chăm sóc người già', 'https://example.com/images/elderly-care.jpg'),
-		('Chăm sóc trẻ nhỏ', 'https://example.com/images/babysitting.jpg'),
-		('Rửa bát đũa', 'https://example.com/images/dishwashing.jpg'),
-		('Lau kính và cửa sổ', 'https://example.com/images/window-cleaning.jpg'),
-		('Dọn dẹp sân vườn', 'https://example.com/images/garden-cleanup.jpg'),
-		('Lau sàn nhà', 'https://example.com/images/floor-mopping.jpg'),
-		('Ủi quần áo', 'https://example.com/images/ironing.jpg');
+VALUES	('Dọn dẹp nhà cửa', 'giupviec1.jpg'),
+		('Giặt giũ quần áo', 'giupviec2.jpg'),
+		('Nấu ăn gia đình', 'giupviec3.jpg'),
+		('Chăm sóc người già', 'giupviec4.jpg'),
+		('Chăm sóc trẻ nhỏ', 'giupviec5.jpg'),
+		('Rửa bát đũa', 'giupviec6.jpg'),
+		('Lau kính và cửa sổ', 'giupviec7.jpg'),
+		('Dọn dẹp sân vườn', 'giupviec8.jpg'),
+		('Lau sàn nhà', 'giupviec9.jpg'),
+		('Ủi quần áo', 'giupviec10.jpg');
 SELECT * FROM image;
 
-INSERT INTO service (name, unit_type, description, created_at, updated_at)
+INSERT INTO service (`name`, unit_type, `description`, created_at, updated_at)
 VALUES	('Dọn dẹp nhà cửa', 'HOUR', 'Dịch vụ lau dọn nhà cửa theo giờ, bao gồm lau sàn, hút bụi, dọn phòng...', NOW(), NOW()),
 		('Giặt giũ quần áo', 'DAY', 'Giặt và phơi quần áo, gấp đồ, ủi đồ nếu có yêu cầu.', NOW(), NOW()),
 		('Nấu ăn gia đình', 'DAY', 'Nấu các bữa ăn trong ngày theo thực đơn hoặc yêu cầu từ khách hàng.', NOW(), NOW()),
@@ -60,6 +60,16 @@ SELECT * FROM service;
 
 
 SELECT * FROM service_image;
+INSERT INTO service_image(service_id, image_id)
+VALUES	(1, 1),
+		(1, 2),
+        (1, 3),
+        (1, 4),
+        (1, 5),
+        (1, 6),
+        (2, 1),
+        (2, 2),
+        (2, 3);
 
 INSERT INTO sub_service(service_id, `name`, `description`, original_price, sales_price, unit_quantity, worker_quantity)
 VALUES	-- Dọn dẹp nhà cửa (service_id = 1)

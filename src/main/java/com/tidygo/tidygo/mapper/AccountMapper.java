@@ -11,8 +11,6 @@ import com.tidygo.tidygo.response.AccountResponse;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
 
-    // AccountMapper INSTANCE = Mappers.getMapper(AccountMapper.class);
-
     @Mapping(target = "id", source = "id")
     @Mapping(target = "username", source = "username")
     @Mapping(target = "email", source = "email")

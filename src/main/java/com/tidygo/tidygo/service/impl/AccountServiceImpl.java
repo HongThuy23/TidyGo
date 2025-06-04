@@ -31,7 +31,7 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public Account disableAccount(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Account not found with id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy tài khoản có id: " + id));
         account.setStatus(AccountStatus.INACTIVE);
         return accountRepository.save(account);
     }
@@ -39,7 +39,7 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public Account enableAccount(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Account not found with id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Không tìm thấy tài khoản có id: " + id));
         account.setStatus(AccountStatus.ACTIVE);
         return accountRepository.save(account);
     }

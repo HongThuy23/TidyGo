@@ -1,8 +1,8 @@
-package com.tidygo.tidygo.response;
-
-import java.time.LocalDateTime;
+package com.tidygo.tidygo.request;
 
 import com.tidygo.tidygo.entity.enums.ServiceUnitType;
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,13 +15,13 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ServiceResponse {
+public class ServiceRequest {
 
-    Long id;
+    @NotBlank(message = "Không được để trống tên dịch vụ")
     String name;
+
+    // @NotBlank(message = "Không được để trống đơn vị dịch vụ")
     ServiceUnitType unitType;
+
     String description;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-    Integer numberOfSubService;
 }
