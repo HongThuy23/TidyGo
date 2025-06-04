@@ -2,6 +2,7 @@ package com.tidygo.tidygo.response;
 
 import java.time.LocalDateTime;
 
+import com.tidygo.tidygo.entity.enums.ServiceUnitType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class ServiceResponse {
 
     Long id;
     String name;
-    String unitType;
+    ServiceUnitType unitType;
     String description;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;

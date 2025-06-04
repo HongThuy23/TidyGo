@@ -32,67 +32,65 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row match-height justify-content-center">
-                                <a th:href="@{/service}" class="text-end my-1"><i class="fa-solid fa-angles-left"></i>
-                                    Trở về trang trước</a>
-                                <div class="d-flex flex-column justify-content-between">
-                                    <div class="form-group">
-                                        <label for="helpInputTop">Tên dịch vụ</label>
-                                        <input type="text" class="form-control" th:value="${service.name}"
-                                            placeholder="Nhập tên dịch vụ" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="helpInputTop">Loại hình dịch vụ</label>
-                                        <small class="text-muted">Đơn vị thời gian</small>
-                                        <select class="form-select" name="unit" th:value="${selectedUnit}" disabled>
-                                            <option th:value="'HOUR'" th:text="'Giờ'"
-                                                th:selected="${selectedUnit == 'HOUR'}"></option>
-                                            <option th:value="'DAY'" th:text="'Ngày'"
-                                                th:selected="${selectedUnit == 'DAY'}"></option>
-                                            <option th:value="'MONTH'" th:text="'Tháng'"
-                                                th:selected="${selectedUnit == 'MONTH'}"></option>
-                                        </select>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="helpInputTop">Tên dịch vụ</label>
-                                        <textarea class="form-control" id="description" rows="3"
-                                            th:text="${service.description}" readonly>Mô tả dịch vụ</textArea>
-                                    </div>
-                                    <div class="d-flex flex-row justify-content-between gap-3">
-                                        <div class="form-group w-75">
-                                            <label for="helpInputTop">Thời gian tạo</label>
-                                            <input type="text" class="form-control" th:value="${service.createdAt}"
-                                                placeholder="Nhập tên dịch vụ" readonly>
+                                <div class="col-md-6">
+                                    <a th:href="@{/service}" class="text-end my-1"><i class="fa-solid fa-angles-left"></i>
+                                        Trở về trang trước</a>
+                                    <div class="d-flex flex-column justify-content-between">
+                                        <div class="form-group">
+                                            <label for="helpInputTop">Tên dịch vụ</label>
+                                            <input type="text" class="form-control" th:value="${service.name}"
+                                                   placeholder="Nhập tên dịch vụ" readonly>
                                         </div>
-                                        <div class="form-group w-75">
-                                            <label for="helpInputTop">Thời gian cập nhật</label>
-                                            <input type="text" class="form-control" th:value="${service.updatedAt}"
-                                                placeholder="Nhập tên dịch vụ" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Phần Image Upload -->
-                                <div class="mb-4">
-                                    <label for="images" class="form-label">Tải hình ảnh</label>
-                                    <input type="file" class="form-control" id="images" name="images" multiple
-                                        accept="image/*" onchange="handleFileSelect(event)">
+                                        <div class="form-group">
+                                            <label for="helpInputTop">Loại hình dịch vụ</label>
+                                            <small class="text-muted">Đơn vị thời gian</small>
+                                            <select class="form-select" name="unit" th:value="${selectedUnit}" disabled>
+                                                <option th:value="'HOUR'" th:text="'Giờ'"
+                                                        th:selected="${selectedUnit == 'HOUR'}"></option>
+                                                <option th:value="'DAY'" th:text="'Ngày'"
+                                                        th:selected="${selectedUnit == 'DAY'}"></option>
+                                                <option th:value="'MONTH'" th:text="'Tháng'"
+                                                        th:selected="${selectedUnit == 'MONTH'}"></option>
+                                            </select>
 
-                                    <!-- Hiển thị ảnh từ database -->
-                                    <div class="preview-container mt-3" id="previewContainer">
-                                        <th:block th:each="image : ${service.images}">
-                                            <div class="preview-item">
-                                                <img th:src="${image.url}" th:alt="${image.name}">
-                                                class="preview-image">
-                                                <div class="remove-btn"
-                                                    th:onclick="'removeExistingImage(this, ' + ${image.id} + ')'">×
-                                                </div>
-                                                <div class="file-name" th:text="${image.url}"></div>
-                                                <input type="hidden" name="existingImages" th:value="${image.id}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="helpInputTop">Tên dịch vụ</label>
+                                            <textarea class="form-control" id="description" rows="3"
+                                                      th:text="${service.description}" readonly>Mô tả dịch vụ</textArea>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-between gap-3">
+                                            <div class="form-group w-75">
+                                                <label for="helpInputTop">Thời gian tạo</label>
+                                                <input type="text" class="form-control" th:value="${service.createdAt}"
+                                                       placeholder="Nhập tên dịch vụ" readonly>
                                             </div>
-                                        </th:block>
+                                            <div class="form-group w-75">
+                                                <label for="helpInputTop">Thời gian cập nhật</label>
+                                                <input type="text" class="form-control" th:value="${service.updatedAt}"
+                                                       placeholder="Nhập tên dịch vụ" readonly>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div id="imageError" class="text-danger mt-2"></div>
                                 </div>
+                                <div class="col-md-6"
+                                     th:if="${images != null and not #lists.isEmpty(images)}">
+                                    <div class="w-100">
+                                        <img id="mainImage"
+                                             th:src="@{/images/service/{filename}(filename=${images[0].url})}"
+                                             class="img-fluid border"
+                                             style=" width: 100%; height: 200px; object-fit: cover;" />
+                                    </div>
+                                    <div class="row g-2 mt-2">
+                                        <div class="col-4" th:each="image : ${images}">
+                                            <img th:src="@{/images/service/{fileName}(fileName = ${image.url})}"
+                                                 class="img-thumbnail small-img"
+                                                 th:attr="onclick='changeImage(this, ' + ${image.id} + ')'"
+                                                 style="width:100%; height: 90px; object-fit: cover;" />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <hr class="mx-5">
 
                                 <div class="d-flex justify-content-between">
@@ -111,10 +109,10 @@
                                                     th:text="'Số lượng người giúp việc: ' + ${subService.workerQuantity}"></strong>
                                                 <div class="d-flex justify-content-between mt-auto pt-4">
                                                     <p class="text-decoration-line-through"
-                                                        th:text="${subService.originalPrice} + ' VNĐ/' + ${service.unitType}">
+                                                        th:text="${subService.originalPrice} + ' VNĐ/' + ${service.unitType.getDisplayName()}">
                                                     </p>
                                                     <p class="fw-bold text-primary"
-                                                        th:text="${subService.salesPrice} + ' VNĐ/' + ${service.unitType}">
+                                                        th:text="${subService.salesPrice} + ' VNĐ/' + ${service.unitType.getDisplayName()}">
                                                     </p>
                                                 </div>
                                             </div>
@@ -129,8 +127,24 @@
 
             <footer th:replace="~{/admin/fragments/footer :: footer}"></footer>
         </div>
-
+        <!-- Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <img id="modalImage" src="" alt="" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        function changeImage(imgElement) {
+            let mainImage = document.getElementById("mainImage");
+            if (mainImage) {
+                mainImage.src = imgElement.src;
+            }
+        }</script>
     <script src="/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
 

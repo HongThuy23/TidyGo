@@ -1,5 +1,6 @@
 package com.tidygo.tidygo.controller;
 
+import com.tidygo.tidygo.service.IImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ public class ServiceController {
 
     final IServiceService serviceService;
     final ISubServiceService subServiceService;
+    final IImageService imageService;
 
     @GetMapping
     public String getAllServices(Model model) {
@@ -37,6 +39,7 @@ public class ServiceController {
     @GetMapping("/{id}")
     public String getServiceDetailById(Model model, @PathVariable Long id) {
         model.addAttribute("service", serviceService.getServiceById(id));
+        model.addAttribute("images", imageService.getImagesByServiceId(id));
         model.addAttribute("subServices", subServiceService.getSubServicesByServiceId(id));
         return "admin/service/service-detail";
     }
